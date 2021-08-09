@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# Pokémon TCG
 
 > One paragraph statement about the project.
 
@@ -16,7 +16,7 @@ Additional description about the project and its features.
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://brenoxav.github.io/pokemon-tcg)
 
 
 ## Getting Started
@@ -72,7 +72,7 @@ You can either build a local production version of the project or open it direct
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/brenoxav/pokemon-tcg/issues).
 
 ## Show your support
 
