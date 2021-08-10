@@ -166,3 +166,12 @@ header {
 .logo {
   max-height: 3rem;
 }
+
+footer {
+  position: absolute;
+  bottom: 0;
+  height: 4rem;
+  width: 960px;
+  padding: 1rem;
+  border-top: 1px solid #000;
+}
