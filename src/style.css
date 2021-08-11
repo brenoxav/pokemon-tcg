@@ -217,15 +217,43 @@ footer {
 }
 
 .comments-container {
-  background-color: black;
-  color: aliceblue;
+  padding: 3rem;
+  background-color: rgb(255, 255, 255);
+  color: rgb(24, 136, 233);
   max-width: 600px;
   margin: auto;
-  margin-top: 20%
+  margin-top: 5%
+}
+
+.img-test {
+  text-align: center;
+  padding-top: 10%;
+  background-color: bisque;
+  max-width: 200px;
+  margin: auto;
+  color: rgb(46, 65, 51);
+  font-weight: bolder;
+  height: 280px;
+}
+
+.comments-pokemon-name {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.outside-comments-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.comments-pokemon-topics-text {
+  padding: 5px;
 }
 
 /* RESERVATIONS POP-UP */
 
 .hidden {
-  display: ;
+  display: block;
 }
