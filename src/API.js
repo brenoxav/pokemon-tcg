@@ -12,20 +12,16 @@ class Api {
       return response.json();
     },
 
-    getAllCards: () => {
-      return this.pokemon.callApi('set.id:base1')
-    },
+    getAllCards: () => this.pokemon.callApi('set.id:base1'),
 
-    getCardbyId: (cardId) => {
-      return this.pokemon.callApi(`id:${cardId}`);
-    },
+    getCardbyId: (cardId) => this.pokemon.callApi(`id:${cardId}`),
   };
 
   involvement = {
     callApi: async (method, query, bodyObj) => {
       const url = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/T2tWRpfkFNscSG5pGg0V/${query}`;
       const options = {
-        method: method,
+        method,
         headers: {
           'Content-Type': 'application/json',
         },
@@ -35,32 +31,22 @@ class Api {
       return method === 'POST' ? response : response.json();
     },
 
-    getLikes: () => {
-      return this.involvement.callApi('GET', 'likes');
-    },
+    getLikes: () => this.involvement.callApi('GET', 'likes'),
 
     postLike: (cardId) => {
       const bodyObj = {
         item_id: cardId,
-      }
+      };
       return this.involvement.callApi('POST', 'likes', bodyObj);
     },
 
-    getComments: (cardId) => {
-      return this.involvement.callApi('GET', `comments?item_id=${cardId}`);
-    },
+    getComments: (cardId) => this.involvement.callApi('GET', `comments?item_id=${cardId}`),
 
-    postComment: (commentObj) => {
-      return this.involvement.callApi('POST', 'comments', commentObj);
-    },
+    postComment: (commentObj) => this.involvement.callApi('POST', 'comments', commentObj),
 
-    getReservations: (cardId) => {
-      return this.involvement.callApi('GET', `reservations?item_id=${cardId}`);
-    },
+    getReservations: (cardId) => this.involvement.callApi('GET', `reservations?item_id=${cardId}`),
 
-    postReservation: (reservationObj) => {
-      return this.involvement.callApi('POST', 'reservations', reservationObj);
-    },
+    postReservation: (reservationObj) => this.involvement.callApi('POST', 'reservations', reservationObj),
   }
 }
 

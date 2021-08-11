@@ -1,8 +1,14 @@
 import './style.css';
-import API from './API.js';
-import logoImg from  './images/pokeball-logo.png';
-const logo = document.querySelector('.logo');
-logo.setAttribute('src', logoImg)
+import renderCardsList from './home.js';
+import logoImg from './images/pokeball-logo.png';
+
+const logoItem = document.querySelector('.logo-item');
+const logo = document.createElement('img');
+logo.src = logoImg;
+logo.classList.add('logo');
+
+logoItem.appendChild(logo);
 
 window.addEventListener('load', () => {
-})
+  renderCardsList();
+});

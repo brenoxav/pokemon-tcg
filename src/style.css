@@ -146,6 +146,8 @@ table {
 
 /* CSS RESET END */
 
+/* MAIN PAGE */
+
 .container {
   max-width: 960px;
   margin: 0 auto;
@@ -154,6 +156,7 @@ table {
 header {
   height: 4rem;
   padding: 1rem;
+  margin-bottom: 2rem;
 }
 
 .nav {
@@ -167,19 +170,28 @@ header {
   max-height: 3rem;
 }
 
+.cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-bottom: 2rem;
 }
 
 .card > div {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   max-width: 360px;
-  background-color: #eee;
+}
+
+.card-image {
+  max-width: 200px;
 }
 
 .like-wrapper {
@@ -187,15 +199,17 @@ header {
   flex-direction: column;
 }
 
-.btn {
-  
-}
-
 footer {
-  position: absolute;
-  bottom: 0;
   height: 4rem;
   width: 960px;
   padding: 1rem;
   border-top: 1px solid #000;
+}
+
+/* COMMENTS POP-UP */
+
+/* RESERVATIONS POP-UP */
+
+.hidden {
+  display: none;
 }
