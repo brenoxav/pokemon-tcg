@@ -1,13 +1,14 @@
 import './style.css';
+import renderCardsList from './home.js';
+import logoImg from './images/pokeball-logo.png';
 
-function component() {
-  const container = document.createElement('div');
-  const header = document.createElement('h1');
+const logoItem = document.querySelector('.logo-item');
+const logo = document.createElement('img');
+logo.src = logoImg;
+logo.classList.add('logo');
 
-  header.textContent = 'Pokémon TCG';
-  container.appendChild(header);
+logoItem.appendChild(logo);
 
-  return container;
-}
-
-document.body.appendChild(component());
+window.addEventListener('load', () => {
+  renderCardsList();
+});

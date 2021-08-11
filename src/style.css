@@ -146,15 +146,70 @@ table {
 
 /* CSS RESET END */
 
-div {
-  max-width: 360px;
-  padding: 1rem;
-  margin: 4rem auto;
-  border: 4px solid blue;
-  text-align: center;
+/* MAIN PAGE */
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
 }
 
-h1 {
-  font-size: 2rem;
-  color: blue;
+header {
+  height: 4rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.logo {
+  max-height: 3rem;
+}
+
+.cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.card > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 360px;
+}
+
+.card-image {
+  max-width: 200px;
+}
+
+.like-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  height: 4rem;
+  width: 960px;
+  padding: 1rem;
+  border-top: 1px solid #000;
+}
+
+/* COMMENTS POP-UP */
+
+/* RESERVATIONS POP-UP */
+
+.hidden {
+  display: none;
 }
