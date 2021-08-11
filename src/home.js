@@ -10,9 +10,9 @@ const updateLikesCount = (countersArr) => {
         if (likeCounter) {
           likeCounter.textContent = `${likeCount.likes} likes`;
         }
-      })
-    })
-}
+      });
+    });
+};
 
 const renderCardsList = () => {
   API.pokemon.getAllCards()
@@ -37,7 +37,7 @@ const renderCardsList = () => {
       });
       return cardsArr;
     })
-    .then((cardsArr) => {
+    .then(() => {
       const counterElements = document.querySelectorAll('.like-count');
       const countersArr = [...counterElements];
       updateLikesCount(countersArr);
