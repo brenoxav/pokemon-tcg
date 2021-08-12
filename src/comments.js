@@ -2,22 +2,21 @@ import API from './API.js';
 
 const commentsPopup = document.querySelector('.comments-popup');
 
-const setCloseButtonListener = (closeBtn) => {
+const setCommentsCloseBtnListener = (closeBtn) => {
   closeBtn.addEventListener('click', () => {
     commentsPopup.classList.add('hidden');
     commentsPopup.innerHTML = '';
   });
 };
 
-const openPopup = (cardID) => {
+const openCommentsPopup = (cardID) => {
   API.pokemon.getCardbyId(cardID)
     .then((card) => {
       const pokemonCard = card.data[0];
-      commentsPopup
-        .innerHTML = `
+      commentsPopup.innerHTML = `
           <div class="comments-content">
           <img src="${pokemonCard.images.large}" alt="${pokemonCard.name}">  
-          <div class="card-info">
+          <div class="comments-card-info">
           <button class="btn btn-close">Close</button>
           <div class="name-class">
             <h2>${pokemonCard.name}</h2>
@@ -38,7 +37,7 @@ const openPopup = (cardID) => {
           </div>
           `;
       commentsPopup.classList.remove('hidden');
-      setCloseButtonListener(document.querySelector('.btn-close'));
+      setCommentsCloseBtnListener(document.querySelector('.btn-close'));
     });
 };
 
@@ -46,7 +45,7 @@ const setCommentsListeners = () => {
   const commentsButtons = document.querySelectorAll('.btn-comments');
   commentsButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      openPopup(button.dataset.id);
+      openCommentsPopup(button.dataset.id);
     });
   });
 };
