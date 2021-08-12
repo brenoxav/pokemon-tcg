@@ -1,4 +1,5 @@
 import API from './API.js';
+import setReservationListeners from './reservations.js';
 
 const cardsWrapper = document.querySelector('.cards-wrapper');
 
@@ -41,6 +42,9 @@ const renderCardsList = () => {
       const counterElements = document.querySelectorAll('.like-count');
       const countersArr = [...counterElements];
       updateLikesCount(countersArr);
+    })
+    .then(() => {
+      setReservationListeners();
     });
 };
 
