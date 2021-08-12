@@ -16,9 +16,7 @@ const openPopup = (cardID) => {
       reservationPopup
         .innerHTML = `
           <div class="reservation-content">
-          <figure>
-            <img src="${pokemonCard.images.large}" alt="">
-          </figure>
+          <img src="${pokemonCard.images.large}" alt="${pokemonCard.name}">  
           <div class="card-info">
           <button class="btn btn-close">Close</button>
           <div class="name-class">

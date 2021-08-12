@@ -230,6 +230,15 @@ footer {
 .reservation-content {
   max-width: 720px;
   max-height: 720px;
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  border: solid 1px #000;
+}
+
+.reservation-content img {
+  max-width: 300px;
+  margin-right: 1em;
 }
 
 .hidden {
