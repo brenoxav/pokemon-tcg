@@ -10,5 +10,5 @@ logo.classList.add('logo');
 logoItem.appendChild(logo);
 
 window.addEventListener('load', () => {
-  renderCardsList();
+  renderCardsList()
 });
