@@ -13,6 +13,7 @@ const openCommentsPopup = (cardID) => {
   API.pokemon.getCardbyId(cardID)
     .then((card) => {
       const pokemonCard = card.data[0];
+      const pokemonPrices = pokemonCard.tcgplayer.prices;
       commentsPopup.innerHTML = `
           <div class="comments-content">
           <img src="${pokemonCard.images.large}" alt="${pokemonCard.name}">  
@@ -28,10 +29,10 @@ const openCommentsPopup = (cardID) => {
             <p class="card-rarity">Rarity: ${pokemonCard.rarity} </p>
           </div>
           <ul>
-            <li>${pokemonCard.tcgplayer.prices.holofoil.low}</li>
-            <li>${pokemonCard.tcgplayer.prices.holofoil.mid}</li>
-            <li>${pokemonCard.tcgplayer.prices.holofoil.high}</li>
-            <li>${pokemonCard.tcgplayer.prices.holofoil.market}</li>
+          <li>${pokemonPrices[Object.keys(pokemonPrices)[0]].low}</li>
+          <li>${pokemonPrices[Object.keys(pokemonPrices)[0]].mid}</li>
+          <li>${pokemonPrices[Object.keys(pokemonPrices)[0]].high}</li>
+          <li>${pokemonPrices[Object.keys(pokemonPrices)[0]].market}</li>
           </ul>
           </div>
           </div>

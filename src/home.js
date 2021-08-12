@@ -1,4 +1,5 @@
 import API from './API.js';
+import setReservationListeners from './reservations.js';
 import setCommentsListeners from './comments.js';
 
 const cardsWrapper = document.querySelector('.cards-wrapper');
@@ -45,6 +46,9 @@ const renderCardsList = () => {
     })
     .then(() => {
       setCommentsListeners();
+    })
+    .then(() => {
+      setReservationListeners();
     });
 };
 
