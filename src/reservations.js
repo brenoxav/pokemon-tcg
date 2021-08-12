@@ -44,7 +44,7 @@ const openPopup = (cardID) => {
 
 const setReservationListeners = () => {
   const reservationButtons = document.querySelectorAll('.btn-reservations');
-    reservationButtons.forEach((button) => {
+  reservationButtons.forEach((button) => {
     button.addEventListener('click', () => {
       openPopup(button.dataset.id);
     });

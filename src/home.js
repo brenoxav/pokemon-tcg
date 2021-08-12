@@ -1,5 +1,5 @@
 import API from './API.js';
-import setReservationListeners from './reservations.js'
+import setReservationListeners from './reservations.js';
 
 const cardsWrapper = document.querySelector('.cards-wrapper');
 
