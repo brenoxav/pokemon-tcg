@@ -201,6 +201,10 @@ header {
   align-items: center;
 }
 
+.btn-like {
+  cursor: pointer;
+}
+
 footer {
   height: 4rem;
   width: 960px;
