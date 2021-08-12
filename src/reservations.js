@@ -1,17 +1,17 @@
-import API from './API.js'
+import API from './API.js';
 
 const reservationPopup = document.querySelector('.reservations-popup');
 
 const setCloseBtnListener = (closeBtn) => {
-  closeBtn.addEventListener('click', ()=>{
+  closeBtn.addEventListener('click', () => {
     reservationPopup.classList.add('hidden');
     reservationPopup.innerHTML = '';
   });
-}
+};
 
 const openPopup = (cardID) => {
   API.pokemon.getCardbyId(cardID)
-    .then((card)=>{
+    .then((card) => {
       const pokemonCard = card.data[0];
       reservationPopup
         .innerHTML = `
@@ -37,20 +37,18 @@ const openPopup = (cardID) => {
           </div>
           </div>
           `;
-    reservationPopup.classList.remove('hidden');
-    setCloseBtnListener(document.querySelector('.btn-close'));
+      reservationPopup.classList.remove('hidden');
+      setCloseBtnListener(document.querySelector('.btn-close'));
     });
-}
+};
 
 const setReservationListeners = () => {
   const reservationButtons = document.querySelectorAll('.btn-reservations');
-  console.log('buttons listeners');
-  console.log(reservationButtons);
-  reservationButtons.forEach((button) => {
-    button.addEventListener('click', ()=>{
+    reservationButtons.forEach((button) => {
+    button.addEventListener('click', () => {
       openPopup(button.dataset.id);
     });
   });
-}
+};
 
 export { setReservationListeners as default };
