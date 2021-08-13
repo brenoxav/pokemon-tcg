@@ -4,7 +4,9 @@ import setCommentsListeners from './comments.js';
 
 const cardsWrapper = document.querySelector('.cards-wrapper');
 
-const updateLikesCount = (countersArr) => {
+const updateLikesCount = () => {
+  const counterElements = document.querySelectorAll('.like-count');
+  const countersArr = [...counterElements];
   API.involvement.getLikes()
     .then((likesArr) => {
       likesArr.forEach((likeCount) => {
@@ -14,6 +16,24 @@ const updateLikesCount = (countersArr) => {
         }
       });
     });
+};
+
+const AddLikeNumber = (likesText) => {
+  const indexEnd = likesText.indexOf(' ') + 1;
+  const numText = likesText.substring(0, indexEnd);
+  const likesNum = Number.parseInt(numText, 10);
+  return likesNum + 1;
+};
+
+const setLikeListener = () => {
+  document.addEventListener('click', (e) => {
+    const likeBtn = e.target;
+    const likeCounter = likeBtn.nextElementSibling;
+    if (likeBtn.classList.contains('btn-like')) {
+      likeCounter.textContent = `${AddLikeNumber(likeCounter.textContent)} likes`;
+      API.involvement.postLike(likeCounter.dataset.id);
+    }
+  });
 };
 
 const renderCardsList = () => {
@@ -40,9 +60,8 @@ const renderCardsList = () => {
       return cardsArr;
     })
     .then(() => {
-      const counterElements = document.querySelectorAll('.like-count');
-      const countersArr = [...counterElements];
-      updateLikesCount(countersArr);
+      setLikeListener();
+      updateLikesCount();
     })
     .then(() => {
       setCommentsListeners();
