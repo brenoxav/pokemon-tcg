@@ -16,29 +16,50 @@ const openCommentsPopup = (cardID) => {
       const pokemonPrices = pokemonCard.tcgplayer.prices;
       commentsPopup.innerHTML = `
           <div class="comments-content">
-          <img src="${pokemonCard.images.large}" alt="${pokemonCard.name}">  
-          <div class="comments-card-info">
-          <button class="btn btn-close">Close</button>
-          <div class="name-class">
-            <h2>${pokemonCard.name}</h2>
-            <p class="card-supertype">${pokemonCard.supertype}</p>
-            <p class="card-subtype">${pokemonCard.subtypes[0]}</p>
-          </div>
-          <div class="set-info">
-            <p class="card-number">Number: ${pokemonCard.number}</p>
-            <p class="card-rarity">Rarity: ${pokemonCard.rarity} </p>
-          </div>
-          <ul>
-          <li>${pokemonPrices[Object.keys(pokemonPrices)[0]].low}</li>
-          <li>${pokemonPrices[Object.keys(pokemonPrices)[0]].mid}</li>
-          <li>${pokemonPrices[Object.keys(pokemonPrices)[0]].high}</li>
-          <li>${pokemonPrices[Object.keys(pokemonPrices)[0]].market}</li>
-          </ul>
-          </div>
+            <img src="${pokemonCard.images.large}" alt="${pokemonCard.name}">  
+            <div class="comments-card-info">
+              <button class="btn btn-close">Close</button>
+              <div class="name-class">
+                <h2>${pokemonCard.name}</h2>
+                <p class="card-supertype">${pokemonCard.supertype}</p>
+                <p class="card-subtype">${pokemonCard.subtypes[0]}</p>
+              </div>
+              <div class="set-info">
+                <p class="card-number">Number: ${pokemonCard.number}</p>
+                <p class="card-rarity">Rarity: ${pokemonCard.rarity} </p>
+              </div>
+              <ul>
+                <li>${pokemonPrices[Object.keys(pokemonPrices)[0]].low}</li>
+                <li>${pokemonPrices[Object.keys(pokemonPrices)[0]].mid}</li>
+                <li>${pokemonPrices[Object.keys(pokemonPrices)[0]].high}</li>
+                <li>${pokemonPrices[Object.keys(pokemonPrices)[0]].market}</li>
+              </ul>
+            </div>
           </div>
           `;
       commentsPopup.classList.remove('hidden');
-      setCommentsCloseBtnListener(document.querySelector('.btn-close'));
+      API.involvement.getComments(cardID)
+        .then((comments) => {
+          if (!('error' in comments)) {
+            const commentsContent = document.querySelector('.comments-content');
+            commentsContent.innerHTML += `
+          <div class="comments-container">
+            <div class="comments-data-container">
+              <p class="comments-count">Comments: X</p>
+              <ul class="comments-data"></ul>
+            </div>          
+          </div>
+        `;
+            const commentsData = document.querySelector('.comments-data');
+            comments.forEach((comments) => {
+              commentsData.innerHTML += `
+            <li>${comments.creation_date} - ${comments.comment} by ${comments.username}</li>
+          `;
+              console.log(comments);
+            });
+          }
+          setCommentsCloseBtnListener(document.querySelector('.btn-close'));
+        });
     });
 };
 
