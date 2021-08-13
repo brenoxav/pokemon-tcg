@@ -198,6 +198,7 @@ header {
   align-items: flex-start;
   margin: 1rem;
   border: 1rem solid #44c;
+  border-radius: 1rem;
   background-color: #44c;
 }
 
