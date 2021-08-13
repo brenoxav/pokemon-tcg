@@ -9,6 +9,12 @@ const setCommentsCloseBtnListener = (closeBtn) => {
   });
 };
 
+const countComments = () => {
+  const numOfComments = document.querySelectorAll('.comments-number').length;
+  document.querySelector('.comments-counter').textContent = `(${numOfComments})`;
+  return numOfComments;
+};
+
 const openCommentsPopup = (cardID) => {
   API.pokemon.getCardbyId(cardID)
     .then((card) => {
@@ -45,7 +51,7 @@ const openCommentsPopup = (cardID) => {
             commentsContent.innerHTML += `
           <div class="comments-container">
             <div class="comments-data-container">
-              <p class="comments-count">Comments: X</p>
+              <p class="comments-count">Comments:<span class="comments-counter"></span></p>
               <ul class="comments-data"></ul>
             </div>          
           </div>
@@ -62,7 +68,7 @@ const openCommentsPopup = (cardID) => {
             const commentsData = document.querySelector('.comments-data');
             comments.forEach((comment) => {
               commentsData.innerHTML += `
-            <li>${comment.creation_date} - ${comment.comment} by ${comment.username}</li>
+            <li class="comments-number">${comment.creation_date} - ${comment.comment} by ${comment.username}</li>
           `;
             });
           }
@@ -85,6 +91,7 @@ const openCommentsPopup = (cardID) => {
               document.getElementById('post-comment').reset();
             });
           });
+          countComments();
           setCommentsCloseBtnListener(document.querySelector('.btn-close'));
         });
     });
