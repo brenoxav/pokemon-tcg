@@ -41,6 +41,12 @@ const generatePopupWindow = () => {
   `;
 };
 
+const countReservations = () => {
+  const reservationNumber = document.querySelectorAll('.reservations-data li').length;
+  document.querySelector('.reservations-count').textContent = `Reservations: ${reservationNumber}`;
+  return reservationNumber;
+};
+
 const populateCardInfo = (pokeCard) => {
   const pokemonPrices = pokeCard.tcgplayer.prices;
   document.querySelector('.poke-image').src = pokeCard.images.large;
@@ -67,6 +73,7 @@ const populateCardReservations = (reservations) => {
       <li>${reservation.date_start} - ${reservation.date_end} by ${reservation.username}</li>
     `;
   });
+  countReservations();
 };
 
 const setCloseBtnListener = (closeBtn) => {
