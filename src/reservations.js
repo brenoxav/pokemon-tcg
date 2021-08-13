@@ -39,7 +39,27 @@ const openPopup = (cardID) => {
           </div>
           `;
       reservationPopup.classList.remove('hidden');
-      setCloseBtnListener(document.querySelector('.btn-close'));
+      API.involvement.getReservations(cardID)
+        .then((reservations) => {
+          if (!('error' in reservations)) {
+            const reservationContent = document.querySelector('.reservation-content');
+            reservationContent.innerHTML += `
+          <div class="reservations-container">
+            <div class="reservation-data-container">
+              <p class="reservations-count">Reservations: X</p>
+              <ul class="reservations-data"></ul>
+            </div>          
+          </div>
+        `;
+            const reservationsData = document.querySelector('.reservations-data');
+            reservations.forEach((reservation) => {
+              reservationsData.innerHTML += `
+            <li>${reservation.date_start} - ${reservation.date_end} by ${reservation.username}</li>
+          `;
+            });
+          }
+          setCloseBtnListener(document.querySelector('.btn-close'));
+        });
     });
 };
 
