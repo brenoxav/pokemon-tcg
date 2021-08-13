@@ -49,14 +49,42 @@ const openCommentsPopup = (cardID) => {
               <ul class="comments-data"></ul>
             </div>          
           </div>
+          <div class="comments-post">
+          <form id="post-comment" action="">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="fname" placeholder="Enter your name..." required><br>
+            <label for="comment">Comment:</label><br>
+            <textarea id="commentText" rows="4" cols="50" name="comment" form="post-comment" placeholder="Add a comment here..." required></textarea>
+            <input id="commentBtn" type="submit" value="Submit">
+          </form> 
+          </div>
         `;
             const commentsData = document.querySelector('.comments-data');
-            comments.forEach((comments) => {
+            comments.forEach((comment) => {
               commentsData.innerHTML += `
-            <li>${comments.creation_date} - ${comments.comment} by ${comments.username}</li>
+            <li>${comment.creation_date} - ${comment.comment} by ${comment.username}</li>
           `;
             });
           }
+          const submitComment = document.getElementById('commentBtn');
+          submitComment.addEventListener('click', (e) => {
+            e.preventDefault();
+            const commentObject = {
+              item_id: pokemonCard.id,
+              username: document.getElementById('name').value,
+              comment: document.getElementById('commentText').value,
+            };
+            API.involvement.postComment(commentObject).then(() => {
+              API.involvement.getComments(cardID).then((comments) => {
+                const lastComment = comments[comments.length - 1];
+                const date = lastComment.creation_date.split('-');
+                const dateFormated = `${date[1]}/${date[2]}/${date[0]}`;
+                document.querySelector('.comments-data').insertAdjacentHTML('beforeend',
+                  `<li>${dateFormated} - ${lastComment.comment} by ${lastComment.username}</li>`);
+              });
+              document.getElementById('post-comment').reset();
+            });
+          });
           setCommentsCloseBtnListener(document.querySelector('.btn-close'));
         });
     });
