@@ -106,4 +106,4 @@ const setCommentsListeners = () => {
   });
 };
 
-export { setCommentsListeners as default };
+export { countComments, setCommentsListeners as default };
