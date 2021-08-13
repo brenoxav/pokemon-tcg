@@ -130,4 +130,4 @@ const setReservationListeners = () => {
   });
 };
 
-export { setReservationListeners as default };
+export { countReservations, setReservationListeners as default };
