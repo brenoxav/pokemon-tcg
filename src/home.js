@@ -53,7 +53,7 @@ const renderCardsList = () => {
             <div>
               <span class="card-name">${card.name}</span>
               <span class="like-wrapper">
-                <span class="btn-like material-icons">favorite_border</span>
+                <span class="btn-like material-icons">favorite</span>
                 <span data-id="${card.id}" class="like-count">0 likes</span>
               </span>
             </div>
