@@ -54,8 +54,8 @@ const openCommentsPopup = (cardID) => {
             <label for="name">Name:</label><br>
             <input type="text" id="name" name="fname" placeholder="Enter your name..."><br>
             <label for="comment">Comment:</label><br>
-            <textarea rows="4" cols="50" name="comment" form="post-comment" placeholder="Add a comment here..."></textarea>
-            <input type="submit" value="Submit">
+            <textarea id="commentText" rows="4" cols="50" name="comment" form="post-comment" placeholder="Add a comment here..."></textarea>
+            <input id="commentBtn" type="submit" value="Submit">
           </form> 
           </div>
         `;
@@ -66,6 +66,15 @@ const openCommentsPopup = (cardID) => {
           `;
             });
           }
+          const submitComment = document.getElementById('commentBtn');
+          submitComment.addEventListener('click' , () => {
+            const commentObject = {
+              item_id: pokemonCard.id, 
+              username: document.getElementById('name').value, 
+              comment: document.getElementById('commentText').value,
+            }
+            API.involvement.postComment(commentObject);
+          });
           setCommentsCloseBtnListener(document.querySelector('.btn-close'));
         });
     });
