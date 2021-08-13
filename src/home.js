@@ -36,6 +36,12 @@ const setLikeListener = () => {
   });
 };
 
+const countCards = () => {
+  const numOfCards = document.querySelectorAll('.card').length;
+  document.querySelector('.cards-counter').textContent = `(${numOfCards})`;
+  return numOfCards;
+};
+
 const renderCardsList = () => {
   API.pokemon.getAllCards()
     .then((data) => {
@@ -60,6 +66,7 @@ const renderCardsList = () => {
       return cardsArr;
     })
     .then(() => {
+      countCards();
       setLikeListener();
       updateLikesCount();
     })
@@ -71,4 +78,4 @@ const renderCardsList = () => {
     });
 };
 
-export { renderCardsList as default };
+export { countCards, renderCardsList as default };
