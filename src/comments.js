@@ -1,5 +1,4 @@
 import API from './API.js';
-import { countCards } from './home.js';
 
 const commentsPopup = document.querySelector('.comments-popup');
 
