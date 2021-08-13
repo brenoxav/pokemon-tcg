@@ -60,20 +60,29 @@ const openCommentsPopup = (cardID) => {
           </div>
         `;
             const commentsData = document.querySelector('.comments-data');
-            comments.forEach((comments) => {
+            comments.forEach((comment) => {
               commentsData.innerHTML += `
-            <li>${comments.creation_date} - ${comments.comment} by ${comments.username}</li>
+            <li>${comment.creation_date} - ${comment.comment} by ${comment.username}</li>
           `;
             });
           }
           const submitComment = document.getElementById('commentBtn');
-          submitComment.addEventListener('click' , () => {
+          submitComment.addEventListener('click', (e) => {
+            e.preventDefault();
             const commentObject = {
-              item_id: pokemonCard.id, 
-              username: document.getElementById('name').value, 
+              item_id: pokemonCard.id,
+              username: document.getElementById('name').value,
               comment: document.getElementById('commentText').value,
-            }
-            API.involvement.postComment(commentObject);
+            };
+            API.involvement.postComment(commentObject).then(() => {
+              API.involvement.getComments(cardID).then((comments) => {
+                const lastComment = comments[comments.length - 1];
+                const date = lastComment.creation_date.split('-');
+                const dateFormated = `${date[1]}/${date[2]}/${date[0]}`;
+                document.querySelector('.comments-data').insertAdjacentHTML('beforeend',
+                  `<li>${dateFormated} - ${lastComment.comment} by ${lastComment.username}</li>`);
+              });
+            });
           });
           setCommentsCloseBtnListener(document.querySelector('.btn-close'));
         });
