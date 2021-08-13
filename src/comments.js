@@ -55,7 +55,6 @@ const openCommentsPopup = (cardID) => {
               commentsData.innerHTML += `
             <li>${comments.creation_date} - ${comments.comment} by ${comments.username}</li>
           `;
-              console.log(comments);
             });
           }
           setCommentsCloseBtnListener(document.querySelector('.btn-close'));
