@@ -52,9 +52,9 @@ const openCommentsPopup = (cardID) => {
           <div class="comments-post">
           <form id="post-comment" action="">
             <label for="name">Name:</label><br>
-            <input type="text" id="name" name="fname" placeholder="Enter your name..."><br>
+            <input type="text" id="name" name="fname" placeholder="Enter your name..." required><br>
             <label for="comment">Comment:</label><br>
-            <textarea id="commentText" rows="4" cols="50" name="comment" form="post-comment" placeholder="Add a comment here..."></textarea>
+            <textarea id="commentText" rows="4" cols="50" name="comment" form="post-comment" placeholder="Add a comment here..." required></textarea>
             <input id="commentBtn" type="submit" value="Submit">
           </form> 
           </div>
@@ -82,6 +82,7 @@ const openCommentsPopup = (cardID) => {
                 document.querySelector('.comments-data').insertAdjacentHTML('beforeend',
                   `<li>${dateFormated} - ${lastComment.comment} by ${lastComment.username}</li>`);
               });
+              document.getElementById('post-comment').reset();
             });
           });
           setCommentsCloseBtnListener(document.querySelector('.btn-close'));
