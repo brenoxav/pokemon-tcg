@@ -45,7 +45,7 @@ const countReservations = () => {
   const reservationNumber = document.querySelectorAll('.reservations-data li').length;
   document.querySelector('.reservations-count').textContent = `Reservations: ${reservationNumber}`;
   return reservationNumber;
-}
+};
 
 const populateCardInfo = (pokeCard) => {
   const pokemonPrices = pokeCard.tcgplayer.prices;
