@@ -38,7 +38,7 @@ const setLikeListener = () => {
 
 const countCards = () => {
   const numOfCards = document.querySelectorAll('.card').length;
-  document.querySelector('.card-counter').textContent = `(${numOfCards})`;
+  document.querySelector('.cards-counter').textContent = `(${numOfCards})`;
   return numOfCards;
 };
 
@@ -78,4 +78,4 @@ const renderCardsList = () => {
     });
 };
 
-export { renderCardsList as default };
+export { countCards, renderCardsList as default };

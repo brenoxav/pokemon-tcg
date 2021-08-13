@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --coverage",
     "watch": "webpack --watch",
     "start": "webpack serve --open --mode development",
     "build": "webpack",
@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/brenoxav/pokemon-tcg",
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.15.0",
+    "@jest/globals": "^27.0.6",
     "babel-eslint": "^10.1.0",
     "css-loader": "^5.2.7",
     "eslint": "^7.30.0",
