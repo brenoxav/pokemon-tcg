@@ -119,6 +119,7 @@ body {
     “Droid Sans”,
     “Helvetica Neue”,
     sans-serif;
+  background-color: #fd0;
 }
 
 ol,
@@ -146,24 +147,38 @@ table {
 
 /* CSS RESET END */
 
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 /* MAIN PAGE */
 
 .container {
   max-width: 960px;
-  margin: 0 auto;
+  min-width: 360px;
+  margin: auto;
+  padding-top: 4rem;
 }
 
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
   height: 4rem;
+  width: 100%;
   padding: 1rem;
-  margin-bottom: 2rem;
+  border-bottom: 4px solid #f00;
+  font-family: 'Bebas Neue', Helvetica, sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+  background-color: #44c;
 }
 
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 960px;
   height: 100%;
+  margin: auto;
 }
 
 .logo {
@@ -173,15 +188,18 @@ header {
 .cards-wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+  margin: 1rem auto;
 }
 
 .card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 2rem;
-  max-width: 360px;
+  margin: 1rem;
+  border: 1rem solid #44c;
+  border-radius: 1rem;
+  background-color: #44c;
 }
 
 .card > div {
@@ -192,24 +210,63 @@ header {
 }
 
 .card-image {
-  max-width: 200px;
+  max-width: 160px;
+}
+
+.card-name {
+  font-family: 'Bebas Neue', Helvetica, sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
 }
 
 .like-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #fff;
 }
 
 .btn-like {
+  color: #f00;
   cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+
+.btn {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  text-transform: uppercase;
+  border: 2px solid #fd0;
+  font-weight: bold;
+  color: #fd0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.btn:hover {
+  color: #44c;
+  background-color: #fd0;
 }
 
 footer {
   height: 4rem;
-  width: 960px;
+  width: 100%;
+  margin: auto;
   padding: 1rem;
-  border-top: 1px solid #000;
+  color: #fff;
+  border-top: 4px solid #f00;
+  background-color: #44c;
+}
+
+footer a:link,
+footer a:visited {
+  color: #fff;
+}
+
+.footer-wrapper {
+  max-width: 960px;
+  margin: auto;
 }
 
 /* COMMENTS POP-UP */
