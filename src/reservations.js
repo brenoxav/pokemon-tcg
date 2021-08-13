@@ -26,7 +26,13 @@ const generatePopupWindow = () => {
         <ul class="reservations-data"></ul>
       </div>
       <div class="reservation-form-container>
-
+        <h2>Add a reservation</h2>
+        <form class="reservation-form">
+          <input type="text" id="username" class="username" placeholder="Type your name" required>
+          <input type="date" id="date-start" name="date-start" min="2021-8-13 placeholder="Start date" required>
+          <input type="date" id="date-end" name="date-end" min="2021-8-14" placeholder="End date" required>
+          <button class="btn btn-reservation">Submit</button>
+        </form>
       </div>          
     </div>
   </div>
@@ -67,16 +73,24 @@ const setCloseBtnListener = (closeBtn) => {
   });
 };
 
+const setSubmitListener = (submitBtn) => {
+  submitBtn.addEventListener('click', e => {
+
+  });
+}
+
 const openPopup = (cardID) => {
   Promise.allSettled([
     API.pokemon.getCardbyId(cardID),
     API.involvement.getReservations(cardID)
   ]).then(values => {
+    console.log(values);
     const pokemonCard = values[0].value.data[0]
     generatePopupWindow();
     populateCardInfo(pokemonCard);
     reservationPopup.classList.remove('hidden');
     setCloseBtnListener(document.querySelector('.btn-close'));
+    setSubmitListener(document.querySelector('.btn-reservation'));
     const reservations = values[1].value;
     if (!("error" in reservations)){
       populateCardReservations(reservations);
