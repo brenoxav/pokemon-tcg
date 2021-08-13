@@ -2,11 +2,10 @@
  * @jest-environment jsdom
  */
 
-import { countCards } from "../home.js";
+import { countCards } from '../home.js';
 
 describe('Count cards on the homepage', () => {
   test('Returns the number of cards rendered on the homepage', () => {
-    
     document.body.innerHTML = `
       <span class="cards-counter"><span>
       <div class="card">
@@ -30,7 +29,6 @@ describe('Count cards on the homepage', () => {
   });
 
   test('Returns the mumber of cards rendered on the homepage', () => {
-    
     document.body.innerHTML = `
       <span class="cards-counter"><span>
     `;
