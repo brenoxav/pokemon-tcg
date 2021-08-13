@@ -49,6 +49,15 @@ const openCommentsPopup = (cardID) => {
               <ul class="comments-data"></ul>
             </div>          
           </div>
+          <div class="comments-post">
+          <form id="post-comment" action="">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="fname" placeholder="Enter your name..."><br>
+            <label for="comment">Comment:</label><br>
+            <textarea rows="4" cols="50" name="comment" form="post-comment" placeholder="Add a comment here..."></textarea>
+            <input type="submit" value="Submit">
+          </form> 
+          </div>
         `;
             const commentsData = document.querySelector('.comments-data');
             comments.forEach((comments) => {
