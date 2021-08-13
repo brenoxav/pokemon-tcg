@@ -40,7 +40,7 @@ const countCards = () => {
   const numOfCards = document.querySelectorAll('.card').length;
   document.querySelector('.card-counter').textContent = `(${numOfCards})`;
   return numOfCards;
-}
+};
 
 const renderCardsList = () => {
   API.pokemon.getAllCards()
