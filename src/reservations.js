@@ -25,11 +25,13 @@ const generatePopupWindow = () => {
         <p class="reservations-count">Reservations: X</p>
         <ul class="reservations-data"></ul>
       </div>
-      <div class="reservation-form-container>
+      <div class="reservation-form-container">
         <h2>Add a reservation</h2>
-        <form class="reservation-form">
-          <input type="text" id="username" class="username" placeholder="Type your name" required>
-          <input type="date" id="date-start" name="date-start" min="2021-8-13 placeholder="Start date" required>
+        <form class="reservations-fill">
+          <input type="text" id="username" class="username" placeholder="Type your name" required><br>
+          <label for="date-start">Start date:</label><br>
+          <input type="date" id="date-start" name="date-start" min="2021-8-13 placeholder="Start date" required><br>
+          <label for="date-end">Date end:</label><br>
           <input type="date" id="date-end" name="date-end" min="2021-8-14" placeholder="End date" required>
           <button class="btn btn-reservation">Submit</button>
         </form>
@@ -37,7 +39,7 @@ const generatePopupWindow = () => {
     </div>
   </div>
   `;
-}
+};
 
 const populateCardInfo = (pokeCard) => {
   const pokemonPrices = pokeCard.tcgplayer.prices;
@@ -45,7 +47,7 @@ const populateCardInfo = (pokeCard) => {
   document.querySelector('.poke-image').alt = pokeCard.name;
   document.querySelector('.name-class h2').textContent = pokeCard.name;
   document.querySelector('.card-supertype').textContent = pokeCard.supertype;
-  document.querySelector('.card-subtype').textContent = pokeCard.subtypes[0];
+  document.querySelector('.card-subtype').textContent = `${pokeCard.subtypes[0]}`;
   document.querySelector('.card-number').textContent = pokeCard.number;
   document.querySelector('.card-rarity').textContent = pokeCard.rarity;
   const pricesList = document.querySelector('.prices-list');
@@ -59,12 +61,13 @@ const populateCardInfo = (pokeCard) => {
 
 const populateCardReservations = (reservations) => {
   const reservationsList = document.querySelector('.reservations-data');
-  reservations.forEach(reservation => {
+  reservationsList.innerHTML = '';
+  reservations.forEach((reservation) => {
     reservationsList.innerHTML += `
       <li>${reservation.date_start} - ${reservation.date_end} by ${reservation.username}</li>
     `;
   });
-}
+};
 
 const setCloseBtnListener = (closeBtn) => {
   closeBtn.addEventListener('click', () => {
@@ -73,26 +76,39 @@ const setCloseBtnListener = (closeBtn) => {
   });
 };
 
-const setSubmitListener = (submitBtn) => {
-  submitBtn.addEventListener('click', e => {
+const postReservation = async (submitBtn, cardID) => {
+  const newReservation = {
+    item_id: cardID,
+    username: document.querySelector('#username').value,
+    date_start: document.querySelector('#date-start').value,
+    date_end: document.querySelector('#date-end').value,
+  };
+  await API.involvement.postReservation(newReservation);
+  submitBtn.parentNode.reset();
+  const reservations = await API.involvement.getReservations(cardID);
+  populateCardReservations(reservations);
+};
 
+const setSubmitListener = (submitBtn, cardID) => {
+  submitBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    postReservation(submitBtn, cardID);
   });
-}
+};
 
 const openPopup = (cardID) => {
   Promise.allSettled([
     API.pokemon.getCardbyId(cardID),
-    API.involvement.getReservations(cardID)
-  ]).then(values => {
-    console.log(values);
-    const pokemonCard = values[0].value.data[0]
+    API.involvement.getReservations(cardID),
+  ]).then((values) => {
+    const pokemonCard = values[0].value.data[0];
     generatePopupWindow();
     populateCardInfo(pokemonCard);
     reservationPopup.classList.remove('hidden');
     setCloseBtnListener(document.querySelector('.btn-close'));
-    setSubmitListener(document.querySelector('.btn-reservation'));
+    setSubmitListener(document.querySelector('.btn-reservation'), cardID);
     const reservations = values[1].value;
-    if (!("error" in reservations)){
+    if (!('error' in reservations)) {
       populateCardReservations(reservations);
     }
   });
