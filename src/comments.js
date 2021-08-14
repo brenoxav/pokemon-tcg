@@ -21,7 +21,7 @@ const openCommentsPopup = (cardID) => {
       const pokemonCard = card.data[0];
       const pokemonPrices = pokemonCard.tcgplayer.prices;
       commentsPopup.innerHTML = `
-      <div class="comments-content">
+      <div class="popup-content">
       <button class="btn btn-close">Close</button>
       <div class="popup-image-wrapper">
         <img src="${pokemonCard.images.large}" alt="${pokemonCard.name}">  
@@ -43,7 +43,7 @@ const openCommentsPopup = (cardID) => {
           <li class="popup-price">Mid: ${pokemonPrices[Object.keys(pokemonPrices)[0]].mid}</li>
           <li class="popup-price">High: ${pokemonPrices[Object.keys(pokemonPrices)[0]].high}</li>
         </ul>
-        <div>
+        <div class="comments-generate">
           <!-- COMMENTS OR RESERVATIONS -->
         </div>
       </div>
@@ -53,7 +53,7 @@ const openCommentsPopup = (cardID) => {
       API.involvement.getComments(cardID)
         .then((comments) => {
           if (!('error' in comments)) {
-            const commentsContent = document.querySelector('.comments-content');
+            const commentsContent = document.querySelector('.comments-generate');
             commentsContent.innerHTML += `
           <div class="comments-container">
             <div class="comments-data-container">
