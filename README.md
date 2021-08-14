@@ -2,11 +2,12 @@
 
 # Pokémon TCG
 
-> One paragraph statement about the project.
+> Pokémon Trading Card Game
 
-![screenshot](./screenshot.png)
+![screenshot](./screenshot-1.png)
+![screenshot](./screenshot-2.png)
 
-Additional description about the project and its features.
+A webapp dedicated to showing information about Pokémon Trading Cards using Pokémon TCG API and Involvement API.
 
 ## Built With
 
@@ -66,7 +67,19 @@ You can either build a local production version of the project or open it direct
 
 - GitHub: [@brenoxav](https://github.com/brenoxav)
 - Twitter: [@brenoxav](https://twitter.com/brenoxav)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/brenoxav)
+- LinkedIn: [Breno Xavier](https://linkedin.com/in/brenoxav)
+
+👨‍💻 **Abel Lavieri**
+
+- GitHub: [@alvp01](https://github.com/alvp01)
+- Twitter: [@alvp01](https://twitter.com/alvp01)
+- LinkedIn: [Abel Lavieri](https://www.linkedin.com/in/alvp01/)
+
+👨‍💻 **Tiago Rahal Aires**
+
+- GitHub: [@tiagorahal](https://github.com/tiagorahal)
+- Twitter: [@RahalAires](https://twitter.com/RahalAires)
+- LinkedIn: [Tiago Rahal Aires](https://linkedin.com/tiagorahal)
 
 ## 🤝 Contributing
 

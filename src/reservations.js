@@ -5,20 +5,20 @@ const reservationPopup = document.querySelector('.reservations-popup');
 const generatePopupWindow = () => {
   reservationPopup.innerHTML = `
     <div class="popup-content">
-      <button class="btn btn-close">Close</button>
+    <button class="btn-close material-icons">close</button>
   
       <div class="popup-image-wrapper">
-        <img src="" alt="">  
+        <img class="popup-image" src="" alt="">  
       </div>
 
       <div class="popup-info">
         <h2 class="popup-name"></h2>
-        <h3>
+        <h3 class="popup-type">
           <span class="popup-supertype"></span> - 
           <span class="popup-subtype"></span>
         </h3>
-        <div>
-          <span class="popup-number">Number: </span>
+        <div class="info-wrapper">
+          <span class="popup-number">Number: </span> - 
           <span class="popup-rarity">Rarity: </span>
         </div>
         <h3>Prices from TCG Player</h3>
@@ -27,7 +27,7 @@ const generatePopupWindow = () => {
 
         <div class="reservations-container">
           <div class="reservation-data-container">
-            <p class="reservations-count">Reservations: X</p>
+            <h3 class="popup-counter reservations-count">Reservations: X</h3>
             <ul class="reservations-data"></ul>
           </div>
           <div class="reservation-form-container">

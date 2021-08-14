@@ -22,29 +22,28 @@ const openCommentsPopup = (cardID) => {
       const pokemonPrices = pokemonCard.tcgplayer.prices;
       commentsPopup.innerHTML = `
       <div class="popup-content">
-      <button class="btn btn-close">Close</button>
+      <button class="btn-close material-icons">close</button>
       <div class="popup-image-wrapper">
-        <img src="${pokemonCard.images.large}" alt="${pokemonCard.name}">  
+        <img class="popup-image" src="${pokemonCard.images.large}" alt="${pokemonCard.name}">  
       </div>
       <div class="popup-info">
         <h2 class="popup-name">${pokemonCard.name}</h2>
-        <h3>
+        <h3 class="popup-type">
           <span class="popup-supertype">${pokemonCard.supertype}</span> - 
           <span class="popup-subtype">${pokemonCard.subtypes[0]}</span>
         </h3>
-        <div>
+        <div class="info-wrapper">
           <span class="popup-number">Number: ${pokemonCard.number}</span>
           <span class="popup-rarity">Rarity: ${pokemonCard.rarity}</span>
         </div>
         <h3>Prices from TCG Player</h3>
-        <ul>
+        <ul class="prices-list">
           <li class="popup-price">Market: ${pokemonPrices[Object.keys(pokemonPrices)[0]].market}</li>
           <li class="popup-price">Low: ${pokemonPrices[Object.keys(pokemonPrices)[0]].low}</li>
           <li class="popup-price">Mid: ${pokemonPrices[Object.keys(pokemonPrices)[0]].mid}</li>
           <li class="popup-price">High: ${pokemonPrices[Object.keys(pokemonPrices)[0]].high}</li>
         </ul>
         <div class="comments-generate">
-          <!-- COMMENTS OR RESERVATIONS -->
         </div>
       </div>
     </div>
@@ -57,7 +56,7 @@ const openCommentsPopup = (cardID) => {
             commentsContent.innerHTML += `
           <div class="comments-container">
             <div class="comments-data-container">
-              <p class="comments-count">Comments:<span class="comments-counter"></span></p>
+              <h3 class="popup-counter comments-count">Comments:<span class="comments-counter"></span></h3>
               <ul class="comments-data"></ul>
             </div>          
           </div>
@@ -67,7 +66,7 @@ const openCommentsPopup = (cardID) => {
             <input type="text" id="name" name="fname" placeholder="Enter your name..." required><br>
             <label for="comment">Comment:</label><br>
             <textarea id="commentText" rows="4" cols="50" name="comment" form="post-comment" placeholder="Add a comment here..." required></textarea>
-            <input id="commentBtn" type="submit" value="Submit">
+            <input class="btn" id="commentBtn" type="submit" value="Submit">
           </form> 
           </div>
         `;
