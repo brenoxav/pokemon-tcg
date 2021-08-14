@@ -33,11 +33,11 @@ const generatePopupWindow = () => {
           <div class="reservation-form-container">
             <h2>Add a reservation</h2>
             <form class="reservations-fill">
-              <input type="text" id="username" class="username" placeholder="Type your name" required><br>
+              <input type="text" id="username" class="username" required><br>
               <label for="date-start">Start date:</label><br>
-              <input type="date" id="date-start" name="date-start" min="2021-8-13 placeholder="Start date" required><br>
+              <input type="date" id="date-start" name="date-start" min="2021-8-13 required><br>
               <label for="date-end">Date end:</label><br>
-              <input type="date" id="date-end" name="date-end" min="2021-8-14" placeholder="End date" required>
+              <input type="date" id="date-end" name="date-end" min="2021-8-14" required>
               <button class="btn btn-reservation">Submit</button>
             </form>
           </div>          
