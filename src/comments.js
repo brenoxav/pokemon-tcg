@@ -21,47 +21,52 @@ const openCommentsPopup = (cardID) => {
       const pokemonCard = card.data[0];
       const pokemonPrices = pokemonCard.tcgplayer.prices;
       commentsPopup.innerHTML = `
-          <div class="comments-content">
-            <img src="${pokemonCard.images.large}" alt="${pokemonCard.name}">  
-            <div class="comments-card-info">
-              <button class="btn btn-close">Close</button>
-              <div class="name-class">
-                <h2>${pokemonCard.name}</h2>
-                <p class="card-supertype">${pokemonCard.supertype}</p>
-                <p class="card-subtype">${pokemonCard.subtypes[0]}</p>
-              </div>
-              <div class="set-info">
-                <p class="card-number">Number: ${pokemonCard.number}</p>
-                <p class="card-rarity">Rarity: ${pokemonCard.rarity} </p>
-              </div>
-              <ul>
-                <li>${pokemonPrices[Object.keys(pokemonPrices)[0]].low}</li>
-                <li>${pokemonPrices[Object.keys(pokemonPrices)[0]].mid}</li>
-                <li>${pokemonPrices[Object.keys(pokemonPrices)[0]].high}</li>
-                <li>${pokemonPrices[Object.keys(pokemonPrices)[0]].market}</li>
-              </ul>
-            </div>
-          </div>
+      <div class="popup-content">
+      <button class="btn-close material-icons">close</button>
+      <div class="popup-image-wrapper">
+        <img class="popup-image" src="${pokemonCard.images.large}" alt="${pokemonCard.name}">  
+      </div>
+      <div class="popup-info">
+        <h2 class="popup-name">${pokemonCard.name}</h2>
+        <h3 class="popup-type">
+          <span class="popup-supertype">${pokemonCard.supertype}</span> - 
+          <span class="popup-subtype">${pokemonCard.subtypes[0]}</span>
+        </h3>
+        <div class="info-wrapper">
+          <span class="popup-number">Number: ${pokemonCard.number}</span>
+          <span class="popup-rarity">Rarity: ${pokemonCard.rarity}</span>
+        </div>
+        <h3>Prices from TCG Player</h3>
+        <ul class="prices-list">
+          <li class="popup-price">Market: ${pokemonPrices[Object.keys(pokemonPrices)[0]].market}</li>
+          <li class="popup-price">Low: ${pokemonPrices[Object.keys(pokemonPrices)[0]].low}</li>
+          <li class="popup-price">Mid: ${pokemonPrices[Object.keys(pokemonPrices)[0]].mid}</li>
+          <li class="popup-price">High: ${pokemonPrices[Object.keys(pokemonPrices)[0]].high}</li>
+        </ul>
+        <div class="comments-generate">
+        </div>
+      </div>
+    </div>
           `;
       commentsPopup.classList.remove('hidden');
       API.involvement.getComments(cardID)
         .then((comments) => {
           if (!('error' in comments)) {
-            const commentsContent = document.querySelector('.comments-content');
+            const commentsContent = document.querySelector('.comments-generate');
             commentsContent.innerHTML += `
           <div class="comments-container">
             <div class="comments-data-container">
-              <p class="comments-count">Comments:<span class="comments-counter"></span></p>
+              <h3 class="popup-counter comments-count">Comments:<span class="comments-counter"></span></h3>
               <ul class="comments-data"></ul>
             </div>          
           </div>
           <div class="comments-post">
           <form id="post-comment" action="">
             <label for="name">Name:</label><br>
-            <input type="text" id="name" name="fname" placeholder="Enter your name..." required><br>
+            <input type="text" id="name" name="fname" required><br>
             <label for="comment">Comment:</label><br>
-            <textarea id="commentText" rows="4" cols="50" name="comment" form="post-comment" placeholder="Add a comment here..." required></textarea>
-            <input id="commentBtn" type="submit" value="Submit">
+            <textarea id="commentText" rows="4" cols="50" name="comment" form="post-comment" required></textarea>
+            <input class="btn" id="commentBtn" type="submit" value="Submit">
           </form> 
           </div>
         `;

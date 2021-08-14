@@ -4,40 +4,46 @@ const reservationPopup = document.querySelector('.reservations-popup');
 
 const generatePopupWindow = () => {
   reservationPopup.innerHTML = `
-  <div class="reservation-content">
-    <img src="" alt="" class="poke-image">
-    <div class="card-info">
-      <button class="btn btn-close">Close</button>
-      <div class="name-class">
-        <h2></h2>
-        <p class="card-supertype"></p>
-        <p class="card-subtype"></p>
+    <div class="popup-content">
+    <button class="btn-close material-icons">close</button>
+  
+      <div class="popup-image-wrapper">
+        <img class="popup-image" src="" alt="">  
       </div>
-      <div class="set-info">
-        <p class="card-number"></p>
-        <p class="card-rarity"></p>
+
+      <div class="popup-info">
+        <h2 class="popup-name"></h2>
+        <h3 class="popup-type">
+          <span class="popup-supertype"></span> - 
+          <span class="popup-subtype"></span>
+        </h3>
+        <div class="info-wrapper">
+          <span class="popup-number">Number: </span> - 
+          <span class="popup-rarity">Rarity: </span>
+        </div>
+        <h3>Prices from TCG Player</h3>
+        <ul class="prices-list">
+        </ul>
+
+        <div class="reservations-container">
+          <div class="reservation-data-container">
+            <h3 class="popup-counter reservations-count">Reservations: X</h3>
+            <ul class="reservations-data"></ul>
+          </div>
+          <div class="reservation-form-container">
+            <h2>Add a reservation</h2>
+            <form class="reservations-fill">
+              <input type="text" id="username" class="username" required><br>
+              <label for="date-start">Start date:</label><br>
+              <input type="date" id="date-start" name="date-start" min="2021-8-13 required><br>
+              <label for="date-end">Date end:</label><br>
+              <input type="date" id="date-end" name="date-end" min="2021-8-14" required>
+              <button class="btn btn-reservation">Submit</button>
+            </form>
+          </div>          
+        </div>
       </div>
-      <ul class="prices-list">
-      </ul>
     </div>
-    <div class="reservations-container">
-      <div class="reservation-data-container">
-        <p class="reservations-count">Reservations: X</p>
-        <ul class="reservations-data"></ul>
-      </div>
-      <div class="reservation-form-container">
-        <h2>Add a reservation</h2>
-        <form class="reservations-fill">
-          <input type="text" id="username" class="username" placeholder="Type your name" required><br>
-          <label for="date-start">Start date:</label><br>
-          <input type="date" id="date-start" name="date-start" min="2021-8-13 placeholder="Start date" required><br>
-          <label for="date-end">Date end:</label><br>
-          <input type="date" id="date-end" name="date-end" min="2021-8-14" placeholder="End date" required>
-          <button class="btn btn-reservation">Submit</button>
-        </form>
-      </div>          
-    </div>
-  </div>
   `;
 };
 
@@ -49,19 +55,19 @@ const countReservations = () => {
 
 const populateCardInfo = (pokeCard) => {
   const pokemonPrices = pokeCard.tcgplayer.prices;
-  document.querySelector('.poke-image').src = pokeCard.images.large;
-  document.querySelector('.poke-image').alt = pokeCard.name;
-  document.querySelector('.name-class h2').textContent = pokeCard.name;
-  document.querySelector('.card-supertype').textContent = pokeCard.supertype;
-  document.querySelector('.card-subtype').textContent = `${pokeCard.subtypes[0]}`;
-  document.querySelector('.card-number').textContent = pokeCard.number;
-  document.querySelector('.card-rarity').textContent = pokeCard.rarity;
+  document.querySelector('.popup-image-wrapper img').src = pokeCard.images.large;
+  document.querySelector('.popup-image-wrapper img').alt = pokeCard.name;
+  document.querySelector('.popup-name').textContent = pokeCard.name;
+  document.querySelector('.popup-supertype').textContent = pokeCard.supertype;
+  document.querySelector('.popup-subtype').textContent = `${pokeCard.subtypes[0]}`;
+  document.querySelector('.popup-number').textContent = pokeCard.number;
+  document.querySelector('.popup-rarity').textContent = pokeCard.rarity;
   const pricesList = document.querySelector('.prices-list');
   pricesList.innerHTML = `
-    <li>${pokemonPrices[Object.keys(pokemonPrices)[0]].low}</li>
-    <li>${pokemonPrices[Object.keys(pokemonPrices)[0]].mid}</li>
-    <li>${pokemonPrices[Object.keys(pokemonPrices)[0]].high}</li>
-    <li>${pokemonPrices[Object.keys(pokemonPrices)[0]].market}</li>
+    <li class="popup-price">Low: ${pokemonPrices[Object.keys(pokemonPrices)[0]].low}</li>
+    <li class="popup-price">Mid: ${pokemonPrices[Object.keys(pokemonPrices)[0]].mid}</li>
+    <li class="popup-price">High ${pokemonPrices[Object.keys(pokemonPrices)[0]].high}</li>
+    <li class="popup-price">Market: ${pokemonPrices[Object.keys(pokemonPrices)[0]].market}</li>
   `;
 };
 
